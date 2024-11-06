@@ -1,14 +1,29 @@
-import { Flex } from '@chakra-ui/react'
+'use client'
+
+import Footer from '@/sections/Footer'
+import Header from '@/sections/Header'
+import Puzzle from '@/sections/Puzzle'
+import { Flex, useBreakpointValue } from '@chakra-ui/react'
 
 export default function Home() {
+  const isMobile =
+    useBreakpointValue({
+      base: true,
+      md: false,
+    }) || false
+
   return (
-    <Flex width="100vh" direction="column" alignItems="center">
-      <h1>Guild Mini Crossword</h1>
-      <CrosswordPuzzle />
+    <Flex
+      height="100vh"
+      width="100%"
+      direction="column"
+      alignItems="center"
+      background="white"
+      justifyContent="space-between"
+    >
+      <Header isMobile={isMobile} />
+      <Puzzle isMobile={isMobile} />
+      {!isMobile && <Footer />}
     </Flex>
   )
-}
-
-const CrosswordPuzzle = () => {
-  return <Flex>Puzzle goes here!</Flex>
 }

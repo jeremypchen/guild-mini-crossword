@@ -1,0 +1,112 @@
+{
+  "metadata": {
+    "id": "",
+    "date": "2024-11-05"
+  },
+  "data": {
+    "across": [
+      {
+        "id": "1_across",
+        "number": 1,
+        "clue": "More ___ you'll ever know",
+        "answer": "THAN",
+        "originX": 2,
+        "originY": 1,
+        "endX": 5,
+        "endY": 1
+      },
+      {
+        "id": "5_across",
+        "number": 5,
+        "clue": "Divine favor, in Christianity",
+        "answer": "GRACE",
+        "originX": 1,
+        "originY": 2,
+        "endX": 5,
+        "endY": 2
+      },
+      {
+        "id": "6_across",
+        "number": 6,
+        "clue": "Sisters who might be sitters",
+        "answer": "AUNTS",
+        "originX": 1,
+        "originY": 3,
+        "endX": 5,
+        "endY": 3
+      },
+      {
+        "id": "7_across",
+        "number": 7,
+        "clue": "Portly-sounding beer",
+        "answer": "STOUT",
+        "originX": 1,
+        "originY": 4,
+        "endX": 5,
+        "endY": 4
+      },
+      {
+        "id": "8_across",
+        "number": 8,
+        "clue": "Cool and stylish",
+        "answer": "HIP",
+        "originX": 2,
+        "originY": 5,
+        "endX": 4,
+        "endY": 5
+      }
+    ],
+    "down": [
+      {
+        "id": "1_down",
+        "number": 1,
+        "clue": "\"The ___ will set you free. But not until it is finished with you\": David Foster Wallace",
+        "answer": "TRUTH",
+        "originX": 2,
+        "originY": 1,
+        "endX": 2,
+        "endY": 5
+      },
+      {
+        "id": "2_down",
+        "number": 2,
+        "clue": "Capital of Vietnam",
+        "answer": "HANOI",
+        "originX": 3,
+        "originY": 1,
+        "endX": 3,
+        "endY": 5
+      },
+      {
+        "id": "3_down",
+        "number": 3,
+        "clue": "Misbehave",
+        "answer": "ACTUP",
+        "originX": 4,
+        "originY": 1,
+        "endX": 4,
+        "endY": 5
+      },
+      {
+        "id": "4_down",
+        "number": 4,
+        "clue": "Prepare for a new baby, say",
+        "answer": "NEST",
+        "originX": 5,
+        "originY": 1,
+        "endX": 5,
+        "endY": 4
+      },
+      {
+        "id": "5_down",
+        "number": 5,
+        "clue": "Fuel for some stoves",
+        "answer": "GAS",
+        "originX": 1,
+        "originY": 2,
+        "endX": 1,
+        "endY": 4
+      }
+    ]
+  }
+}
