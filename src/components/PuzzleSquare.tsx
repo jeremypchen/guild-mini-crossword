@@ -6,35 +6,25 @@ const PuzzleSquare = ({
   activeClue,
   activeClueLetter,
   onSelectClueLetter,
-  isCircle = false,
-  isPuzzleFinished,
 }: {
   clueLetter: ClueLetter
   activeClue: Clue
   activeClueLetter: ClueLetter
   onSelectClueLetter: (clueLetter: ClueLetter) => void
-  isCircle?: boolean
-  isPuzzleFinished: boolean
 }) => {
   const isClueLetterSelected = activeClueLetter.id === clueLetter.id
   const isClueSelected =
     activeClue.id === clueLetter.acrossClue?.id ||
     activeClue.id === clueLetter.downClue?.id
-  //   const isHighlightedPartnerClueSelected =
-  //     activeClue.highlightedPartnerClueId === clueLetter.acrossClue.id ||
-  //     activeClue.highlightedPartnerClueId === clueLetter.downClue.id
 
   const showAcrossClueNumber = clueLetter.indexInAcrossClueAnswer === 0
   const showDownClueNumber = clueLetter.isFirstLetterInDownClueAnswer
   const showClueNumber =
     (showAcrossClueNumber || showDownClueNumber) && clueLetter.number !== 0
 
-  const takeThePlungeHighlighted =
-    isPuzzleFinished && clueLetter.acrossClue.number === 33
-
   let backgroundColor = '#FFF' // default gray
 
-  if (isClueLetterSelected || takeThePlungeHighlighted) {
+  if (isClueLetterSelected) {
     backgroundColor = '#FD8E8F'
   } else if (isClueSelected) {
     backgroundColor = '#FED9DA'
@@ -51,33 +41,22 @@ const PuzzleSquare = ({
       width="80px"
       backgroundColor={backgroundColor}
       alignItems="center"
-      opacity={isPuzzleFinished && !takeThePlungeHighlighted ? 0.2 : 1}
     >
       {showClueNumber && (
         <Text
-          style={{
-            color: 'black',
-            fontSize: '12px',
-            position: 'absolute',
-            top: 0,
-            left: 2,
-            zIndex: 1,
-          }}
+          color="black"
+          fontSize="12px"
+          position="absolute"
+          top="0px"
+          left="2px"
+          zIndex="1"
         >
           {clueLetter.number}
         </Text>
       )}
 
-      <Text
-        style={{
-          color: 'black',
-          fontSize: '19px',
-          position: 'absolute',
-          top: 4,
-        }}
-      >
+      <Text color="black" fontSize="19px" position="absolute" top="4px">
         {clueLetter.input}
-        {/* {clueLetter.answer} */}
       </Text>
     </Flex>
   )

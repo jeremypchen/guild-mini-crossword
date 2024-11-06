@@ -1,13 +1,18 @@
-import { mapToCluesAndClueLetters } from '@/app/utils'
+import { mapToCluesAndClueLetters, timerSecondsToMinutes } from '@/app/utils'
 import ClueBar from '@/components/ClueBar'
 import EmptyPuzzleSquare from '@/components/EmptyPuzzleSquare'
 import PuzzleSquare from '@/components/PuzzleSquare'
 import { PuzzleData, Clue, ClueLetter } from '@/types'
 import { Flex, Text } from '@chakra-ui/react'
-import { useMemo, useState } from 'react'
+import { use, useEffect, useMemo, useState } from 'react'
 
-const Puzzle = ({ isMobile }: { isMobile: boolean }) => {
-  const puzzleData: PuzzleData = require('../example_puzzle.json')
+const Puzzle = ({
+  isMobile,
+  puzzleData,
+}: {
+  isMobile: boolean
+  puzzleData: PuzzleData
+}) => {
   const { acrossClues, downClues, initialClueLetterMap } = useMemo(() => {
     return mapToCluesAndClueLetters(puzzleData)
   }, [puzzleData])
@@ -29,7 +34,23 @@ const Puzzle = ({ isMobile }: { isMobile: boolean }) => {
     return acc
   }, {} as Record<number, ClueLetter[]>)
 
-  const isPuzzleFinished = false
+  const [timer, setTimer] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimer((prev) => {
+        const newTimerVal = prev + 1
+        return newTimerVal
+      })
+    }, 1000)
+
+    return () => {
+      clearInterval(interval)
+    }
+  }, [])
+
+  const isPuzzleFinished = false // TODO!
+
   let activeDirection = activeClue.direction
 
   const onToggleDirection = (clueLetter?: ClueLetter) => {
@@ -146,8 +167,8 @@ const Puzzle = ({ isMobile }: { isMobile: boolean }) => {
 
   return (
     <Flex direction="column" alignItems="center" paddingTop="30px">
-      <Text color="black" marginBottom="30px">
-        Timer
+      <Text color="black" marginBottom="30px" fontSize="16px">
+        {timerSecondsToMinutes(timer)}
       </Text>
 
       <Flex
@@ -159,45 +180,32 @@ const Puzzle = ({ isMobile }: { isMobile: boolean }) => {
       >
         {Object.entries(clueLettersGroupedByRow).map(
           ([rowAsStr, clueLettersInRow]) => {
-            let x = 1
+            const firstSquare = clueLettersInRow.find((clueLetter) => {
+              return 1 === clueLetter.x
+            })
+            const secondSquare = clueLettersInRow.find((clueLetter) => {
+              return 2 === clueLetter.x
+            })
             return (
-              <Flex key={rowAsStr} direction="row">
-                {clueLettersInRow.map((clueLetter) => {
-                  if (clueLetter.x > x) {
-                    const emptyPrependSquares = clueLetter.x - x
-
-                    x = clueLetter.x + 1
-                    return [
-                      ...Array.from({ length: emptyPrependSquares }).map(
-                        (_, i) => (
-                          <EmptyPuzzleSquare
-                            key={`empty-row:${rowAsStr}-${i}`}
-                            isPuzzleFinished={isPuzzleFinished}
-                          />
-                        )
-                      ),
-                      <PuzzleSquare
-                        key={clueLetter.id}
-                        clueLetter={clueLetter}
-                        activeClue={activeClue}
-                        activeClueLetter={activeClueLetter}
-                        onSelectClueLetter={() => onToggleDirection(clueLetter)}
-                        isPuzzleFinished={isPuzzleFinished}
-                      />,
-                    ]
-                  } else {
-                    x += 1
-                    return (
-                      <PuzzleSquare
-                        key={clueLetter.id}
-                        clueLetter={clueLetter}
-                        activeClue={activeClue}
-                        activeClueLetter={activeClueLetter}
-                        onSelectClueLetter={() => onToggleDirection(clueLetter)}
-                        isPuzzleFinished={isPuzzleFinished}
-                      />
-                    )
-                  }
+              <Flex>
+                {[1, 2, 3, 4, 5].map((x) => {
+                  const clueLetter = clueLettersInRow.find((clueLetter) => {
+                    return x === clueLetter.x
+                  })
+                  return clueLetter ? (
+                    <PuzzleSquare
+                      key={clueLetter.id}
+                      clueLetter={clueLetter}
+                      activeClue={activeClue}
+                      activeClueLetter={activeClueLetter}
+                      onSelectClueLetter={() => onToggleDirection(clueLetter)}
+                    />
+                  ) : (
+                    <EmptyPuzzleSquare
+                      key={`empty-row:${rowAsStr}-${x}`}
+                      isPuzzleFinished={isPuzzleFinished}
+                    />
+                  )
                 })}
               </Flex>
             )

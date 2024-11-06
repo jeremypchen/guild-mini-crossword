@@ -43,12 +43,7 @@ const ClueBar = ({
         cursor="pointer"
         justifyContent="left"
       >
-        <Text
-          style={{
-            color: 'black',
-            fontSize: '13px',
-          }}
-        >
+        <Text color="black" fontSize="13px" userSelect="none">
           {clue.clue}
         </Text>
       </Flex>
