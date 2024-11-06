@@ -1,7 +1,8 @@
-import { mapToCluesAndClueLetters, timerSecondsToMinutes } from '@/app/utils'
+import { mapToCluesAndClueLetters } from '@/app/utils'
 import ClueBar from '@/components/ClueBar'
 import EmptyPuzzleSquare from '@/components/EmptyPuzzleSquare'
 import PuzzleSquare from '@/components/PuzzleSquare'
+import Timer from '@/components/Timer'
 import { PuzzleData, Clue, ClueLetter } from '@/types'
 import { Flex, Text } from '@chakra-ui/react'
 import { use, useEffect, useMemo, useState } from 'react'
@@ -34,20 +35,29 @@ const Puzzle = ({
     return acc
   }, {} as Record<number, ClueLetter[]>)
 
-  const [timer, setTimer] = useState(0)
-
+  // add listener for keypress
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTimer((prev) => {
-        const newTimerVal = prev + 1
-        return newTimerVal
-      })
-    }, 1000)
+    const handleKeyPress = (e: KeyboardEvent) => {
+      const character = e.key.toUpperCase()
+      onKeyPress(character)
+    }
+
+    window.addEventListener('keypress', handleKeyPress)
+    window.addEventListener('keydown', (e) => {
+      if (e.keyCode === 8) {
+        onBackspace()
+      }
+    })
 
     return () => {
-      clearInterval(interval)
+      window.removeEventListener('keypress', handleKeyPress)
+      window.removeEventListener('keydown', (e) => {
+        if (e.keyCode === 8) {
+          onBackspace()
+        }
+      })
     }
-  }, [])
+  }, [activeClueLetterId, activeClue])
 
   const isPuzzleFinished = false // TODO!
 
@@ -165,11 +175,135 @@ const Puzzle = ({
     }
   }
 
+  const onBackspace = () => {
+    const currentClueLetterHasInput = clueLetterMap[activeClueLetterId].input
+    const indexInClueAnswer = activeClue.clueLetters.findIndex(
+      (clueLetter) => clueLetter.id === activeClueLetterId
+    )
+
+    setClueLetterMap((prev) => {
+      return {
+        ...prev,
+        [activeClueLetterId]: {
+          ...prev[activeClueLetterId],
+          input: null,
+        },
+      }
+    })
+
+    if (currentClueLetterHasInput) {
+      return
+    }
+
+    // if we didn't clear any input, clear the previous clue letter (if there is one), then go back one letter
+    const previousClueLetter = activeClue.clueLetters[indexInClueAnswer - 1]
+    if (previousClueLetter) {
+      // clear and then go to it
+      setClueLetterMap((prev) => {
+        return {
+          ...prev,
+          [previousClueLetter.id]: {
+            ...prev[previousClueLetter.id],
+            input: null,
+          },
+        }
+      })
+      setActiveClueLetterId(previousClueLetter.id)
+      return
+    }
+
+    // if no previous clue letter, go to the last clue letter of the previous clue
+    // if there is input in that clue letter, clear it
+    const currentClueId = activeClue.id
+    let nextClue: Clue
+    if (activeDirection === 'across') {
+      const nextClueIndex = acrossClues.findIndex(
+        (clue) => clue.id === currentClueId
+      )
+      nextClue = acrossClues[nextClueIndex - 1]
+      if (!nextClue) {
+        nextClue = downClues[downClues.length - 1]
+      }
+    } else {
+      const nextClueIndex = downClues.findIndex(
+        (clue) => clue.id === currentClueId
+      )
+      nextClue = downClues[nextClueIndex - 1]
+      if (!nextClue) {
+        nextClue = acrossClues[acrossClues.length - 1]
+      }
+    }
+
+    if (!nextClue) throw new Error('No next clue found')
+
+    const lastClueLetter = nextClue.clueLetters[nextClue.clueLetters.length - 1]
+    if (clueLetterMap[lastClueLetter.id].input) {
+      setClueLetterMap((prev) => {
+        return {
+          ...prev,
+          [lastClueLetter.id]: {
+            ...prev[lastClueLetter.id],
+            input: null,
+          },
+        }
+      })
+    }
+    setActiveClue(nextClue)
+    setActiveClueLetterId(lastClueLetter.id)
+  }
+
+  const onKeyPress = (character: string | null) => {
+    if (character === '<X') {
+      onBackspace()
+      return
+    }
+
+    const currentClueLetterHasInput = clueLetterMap[activeClueLetterId].input
+    setClueLetterMap((prev) => {
+      return {
+        ...prev,
+        [activeClueLetterId]: {
+          ...prev[activeClueLetterId],
+          input: character,
+        },
+      }
+    })
+
+    const indexInClueAnswer = activeClue.clueLetters.findIndex(
+      (clueLetter) => clueLetter.id === activeClueLetterId
+    )
+
+    // if replacing a letter, then just go to the next clue letter, if exists
+    if (currentClueLetterHasInput) {
+      const nextClueLetter = activeClue.clueLetters[indexInClueAnswer + 1]
+      if (nextClueLetter) {
+        setActiveClueLetterId(nextClueLetter.id)
+        return
+      }
+    }
+
+    // otherwise, go to the next empty clue letter
+    for (const clueLetter of activeClue.clueLetters.slice(
+      indexInClueAnswer + 1
+    )) {
+      if (!clueLetterMap[clueLetter.id].input) {
+        setActiveClueLetterId(clueLetter.id)
+        return
+      }
+    }
+
+    // otherwise go to the next clue, and the first empty clue letter in that clue
+    onNextClue()
+  }
+
+  console.log({
+    activeDirection,
+    activeClue,
+  })
+
   return (
     <Flex direction="column" alignItems="center" paddingTop="30px">
-      <Text color="black" marginBottom="30px" fontSize="16px">
-        {timerSecondsToMinutes(timer)}
-      </Text>
+      <Timer />
 
       <Flex
         // width={isMobile ? '100%' : '50%'}
@@ -180,12 +314,6 @@ const Puzzle = ({
       >
         {Object.entries(clueLettersGroupedByRow).map(
           ([rowAsStr, clueLettersInRow]) => {
-            const firstSquare = clueLettersInRow.find((clueLetter) => {
-              return 1 === clueLetter.x
-            })
-            const secondSquare = clueLettersInRow.find((clueLetter) => {
-              return 2 === clueLetter.x
-            })
             return (
               <Flex>
                 {[1, 2, 3, 4, 5].map((x) => {

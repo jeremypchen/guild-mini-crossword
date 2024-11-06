@@ -45,19 +45,21 @@ const PuzzleSquare = ({
       {showClueNumber && (
         <Text
           color="black"
-          fontSize="12px"
+          fontSize="14px"
           position="absolute"
           top="0px"
           left="2px"
           zIndex="1"
+          userSelect="none"
         >
           {clueLetter.number}
         </Text>
       )}
-
-      <Text color="black" fontSize="19px" position="absolute" top="4px">
-        {clueLetter.input}
-      </Text>
+      <Flex alignItems="center" justifyContent="center" width="100%">
+        <Text color="black" fontSize="50px" userSelect="none">
+          {clueLetter.input}
+        </Text>
+      </Flex>
     </Flex>
   )
 }
