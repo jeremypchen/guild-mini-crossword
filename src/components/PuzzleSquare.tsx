@@ -32,33 +32,32 @@ const PuzzleSquare = ({
   const takeThePlungeHighlighted =
     isPuzzleFinished && clueLetter.acrossClue.number === 33
 
-  let backgroundColor = '#595962' // default gray
+  let backgroundColor = '#FFF' // default gray
 
   if (isClueLetterSelected || takeThePlungeHighlighted) {
-    backgroundColor = '#5379a6' // blue
+    backgroundColor = '#FD8E8F'
   } else if (isClueSelected) {
-    backgroundColor = '#473f7c' // purple
+    backgroundColor = '#FED9DA'
   }
-  //   else if (isHighlightedPartnerClueSelected) {
-  //     backgroundColor = '#5c6c7f' // highlight blue
-  //   }
 
   return (
     <Flex
+      position="relative"
       onClick={() => onSelectClueLetter(clueLetter)}
-      style={{
-        backgroundColor,
-        height: 25,
-        width: 25,
-        alignItems: 'center',
-        opacity: isPuzzleFinished && !takeThePlungeHighlighted ? 0.2 : 1,
-      }}
+      borderColor="black"
+      borderStyle="solid"
+      borderWidth="0.5px"
+      height="80px"
+      width="80px"
+      backgroundColor={backgroundColor}
+      alignItems="center"
+      opacity={isPuzzleFinished && !takeThePlungeHighlighted ? 0.2 : 1}
     >
       {showClueNumber && (
         <Text
           style={{
-            color: 'white',
-            fontSize: 8,
+            color: 'black',
+            fontSize: '12px',
             position: 'absolute',
             top: 0,
             left: 2,
@@ -71,8 +70,8 @@ const PuzzleSquare = ({
 
       <Text
         style={{
-          color: 'white',
-          fontSize: 19,
+          color: 'black',
+          fontSize: '19px',
           position: 'absolute',
           top: 4,
         }}

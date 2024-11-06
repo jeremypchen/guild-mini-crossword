@@ -19,7 +19,6 @@ export default function Home() {
       direction="column"
       alignItems="center"
       background="white"
-      justifyContent="space-between"
     >
       <Header isMobile={isMobile} />
       <Puzzle isMobile={isMobile} />
