@@ -42,20 +42,18 @@ const Puzzle = ({
       onKeyPress(character)
     }
 
-    window.addEventListener('keypress', handleKeyPress)
-    window.addEventListener('keydown', (e) => {
-      if (e.keyCode === 8) {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Backspace') {
         onBackspace()
       }
-    })
+    }
+
+    window.addEventListener('keypress', handleKeyPress)
+    window.addEventListener('keydown', handleKeyDown)
 
     return () => {
       window.removeEventListener('keypress', handleKeyPress)
-      window.removeEventListener('keydown', (e) => {
-        if (e.keyCode === 8) {
-          onBackspace()
-        }
-      })
+      window.removeEventListener('keydown', handleKeyDown)
     }
   }, [activeClueLetterId, activeClue])
 
@@ -176,6 +174,8 @@ const Puzzle = ({
   }
 
   const onBackspace = () => {
+    console.log('on backspace!')
+
     const currentClueLetterHasInput = clueLetterMap[activeClueLetterId].input
     const indexInClueAnswer = activeClue.clueLetters.findIndex(
       (clueLetter) => clueLetter.id === activeClueLetterId
@@ -295,11 +295,6 @@ const Puzzle = ({
     // otherwise go to the next clue, and the first empty clue letter in that clue
     onNextClue()
   }
-
-  console.log({
-    activeDirection,
-    activeClue,
-  })
 
   return (
     <Flex direction="column" alignItems="center" paddingTop="30px">
