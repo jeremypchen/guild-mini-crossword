@@ -1,11 +1,21 @@
 import { timerSecondsToMinutes } from '@/app/utils'
 import { Text } from '@chakra-ui/react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, SetStateAction } from 'react'
 
-const Timer = ({ isMobile }: { isMobile: boolean }) => {
-  const [timer, setTimer] = useState(0)
-
+const Timer = ({
+  isMobile,
+  timer,
+  setTimer,
+  stopTimer,
+}: {
+  isMobile: boolean
+  timer: number
+  setTimer: React.Dispatch<SetStateAction<number>>
+  stopTimer: boolean
+}) => {
   useEffect(() => {
+    if (stopTimer) return
+
     const interval = setInterval(() => {
       setTimer((prev) => {
         const newTimerVal = prev + 1
@@ -16,7 +26,7 @@ const Timer = ({ isMobile }: { isMobile: boolean }) => {
     return () => {
       clearInterval(interval)
     }
-  }, [])
+  }, [stopTimer])
 
   return (
     <Text

@@ -319,13 +319,20 @@ const Puzzle = ({ puzzleData }: { puzzleData: PuzzleData }) => {
     }
   }, [isPuzzleFilledOut])
 
+  const [timer, setTimer] = useState(0)
+
   return (
     <Flex
       direction="column"
       alignItems="center"
       paddingTop={isMobile ? '10px' : '30px'}
     >
-      <Timer isMobile={isMobile} />
+      <Timer
+        isMobile={isMobile}
+        timer={timer}
+        setTimer={setTimer}
+        stopTimer={isPuzzleCorrect}
+      />
 
       {showPuzzleIncorrectModal && (
         <PuzzleIncorrectModal
@@ -335,6 +342,7 @@ const Puzzle = ({ puzzleData }: { puzzleData: PuzzleData }) => {
 
       {showPuzzleCorrectModal && (
         <PuzzleCompletedModal
+          secondsToComplete={timer}
           onClose={() => setShowPuzzleCorrectModal(false)}
         />
       )}

@@ -23,7 +23,7 @@ const Home = async () => {
 }
 
 const loadPuzzle = async (): Promise<PuzzleData> => {
-  // TODO - load puzzle from somewhere with the closest date to today
+  // TODO - load puzzle from somewherewith the closest date to today
   return require('../puzzles/sarah.json')
 }
 
