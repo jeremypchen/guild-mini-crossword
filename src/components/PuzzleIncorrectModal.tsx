@@ -10,9 +10,9 @@ const PuzzleIncorrectModal = ({ onClose }: { onClose: () => void }) => {
   return (
     <Flex
       position="absolute"
-      top={isMobile ? '' : '200px'}
-      height={isMobile ? '' : '400px'}
-      width={isMobile ? '' : '400px'}
+      top={isMobile ? '30vh' : '200px'}
+      height={isMobile ? '300px' : '400px'}
+      width={isMobile ? '320px' : '400px'}
       zIndex={100}
       justifyContent="center"
       alignItems="center"

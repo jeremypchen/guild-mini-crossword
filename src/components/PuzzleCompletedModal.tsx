@@ -19,14 +19,15 @@ const PuzzleCompletedModal = ({
     <Flex
       zIndex={2}
       position="absolute"
-      top={isMobile ? '200px' : '100px'}
-      height={isMobile ? '350px' : '600px'}
-      width={isMobile ? '350px' : '600px'}
+      top={isMobile ? '50px' : '100px'}
+      height={isMobile ? '' : '600px'}
+      width={isMobile ? '360px' : '600px'}
       backgroundColor="#FED9DA"
       boxShadow="xs"
       rounded="md"
       direction="column"
-      padding="50px"
+      paddingY="50px"
+      paddingX={isMobile ? '20px' : '50px'}
     >
       <Button
         position="absolute"
@@ -53,7 +54,7 @@ const PuzzleCompletedModal = ({
         borderBottom="1px solid #1E1E1E"
         justifyContent="space-between"
         paddingY="10px"
-        paddingX="40px"
+        paddingX={isMobile ? '' : '40px'}
       >
         <Flex direction="column" alignItems="center">
           <Text fontSize="36px" color="#B42E2F" fontWeight="bold">
@@ -84,7 +85,7 @@ const PuzzleCompletedModal = ({
       </Flex>
 
       <Button alignSelf="flex-end" background="transparent">
-        <Flex gap="4px">
+        <Flex gap="4px" fontWeight="bold">
           Share your results
           <IoShareSocialOutline />
         </Flex>
@@ -94,13 +95,21 @@ const PuzzleCompletedModal = ({
         color="white"
         backgroundColor="#B42F2F"
         fontWeight="bold"
-        fontSize="24px"
+        fontSize={isMobile ? '16px' : '24px'}
         paddingY="30px"
+        onClick={() =>
+          window.open('https://nytimesguild.org/tech/guild-builds/index.html')
+        }
       >
         New games, every day while we strike.
       </Button>
 
-      <Text alignSelf="center" color="black" marginTop="14px" fontSize="18px">
+      <Text
+        alignSelf="center"
+        color="black"
+        marginTop="14px"
+        fontSize={isMobile ? '14px' : '18px'}
+      >
         By the NYT Tech Guild
       </Text>
     </Flex>
@@ -116,7 +125,7 @@ const daysSinceStrike = () => {
 }
 
 const daysSinceNegotiation = () => {
-  const strikeDate = new Date('2022-11-4')
+  const strikeDate = new Date('2022-07-27')
   const currentDate = new Date()
   const timeDiff = Math.abs(currentDate.getTime() - strikeDate.getTime())
   const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24))
