@@ -1,20 +1,11 @@
-'use client'
-
 import Footer from '@/sections/Footer'
 import Header from '@/sections/Header'
 import Puzzle from '@/sections/Puzzle'
 import { PuzzleData } from '@/types'
-import { Flex, useBreakpointValue } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 
-export default function Home() {
-  // TODO - load from somewhere
-  const puzzleData: PuzzleData = require('../puzzles/sarah.json')
-
-  const isMobile =
-    useBreakpointValue({
-      base: true,
-      md: false,
-    }) || false
+const Home = async () => {
+  const puzzleData = await loadPuzzle()
 
   return (
     <Flex
@@ -24,9 +15,16 @@ export default function Home() {
       alignItems="center"
       background="white"
     >
-      <Header isMobile={isMobile} />
-      <Puzzle isMobile={isMobile} puzzleData={puzzleData} />
-      <Footer isMobile={isMobile} />
+      <Header />
+      <Puzzle puzzleData={puzzleData} />
+      <Footer />
     </Flex>
   )
 }
+
+const loadPuzzle = async (): Promise<PuzzleData> => {
+  // TODO - load puzzle from somewhere with the closest date to today
+  return require('../puzzles/sarah.json')
+}
+
+export default Home

@@ -1,7 +1,13 @@
-import { Flex, Text } from '@chakra-ui/react'
+'use client'
 
-const Header = ({ isMobile }: { isMobile: boolean }) => {
-  // Conditionally render the header based on isMobile
+import { Flex, Text, useBreakpointValue } from '@chakra-ui/react'
+
+const Header = () => {
+  const isMobile =
+    useBreakpointValue({
+      base: true,
+      md: false,
+    }) || false
 
   return (
     <Flex

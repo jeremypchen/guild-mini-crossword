@@ -1,6 +1,14 @@
-import { Flex, Text } from '@chakra-ui/react'
+'use client'
 
-const Footer = ({ isMobile }: { isMobile: boolean }) => {
+import { Flex, Text, useBreakpointValue } from '@chakra-ui/react'
+
+const Footer = () => {
+  const isMobile =
+    useBreakpointValue({
+      base: true,
+      md: false,
+    }) || false
+
   return (
     <Flex
       width="100%"

@@ -1,3 +1,5 @@
+'use client'
+
 import { mapToCluesAndClueLetters } from '@/app/utils'
 import ClueBar from '@/components/ClueBar'
 import EmptyPuzzleSquare from '@/components/EmptyPuzzleSquare'
@@ -5,16 +7,16 @@ import MobileKeyboard from '@/components/MobileKeyboard'
 import PuzzleSquare from '@/components/PuzzleSquare'
 import Timer from '@/components/Timer'
 import { PuzzleData, Clue, ClueLetter } from '@/types'
-import { Flex } from '@chakra-ui/react'
+import { Flex, useBreakpointValue } from '@chakra-ui/react'
 import { useEffect, useMemo, useState } from 'react'
 
-const Puzzle = ({
-  isMobile,
-  puzzleData,
-}: {
-  isMobile: boolean
-  puzzleData: PuzzleData
-}) => {
+const Puzzle = ({ puzzleData }: { puzzleData: PuzzleData }) => {
+  const isMobile =
+    useBreakpointValue({
+      base: true,
+      md: false,
+    }) || false
+
   const { acrossClues, downClues, initialClueLetterMap } = useMemo(() => {
     return mapToCluesAndClueLetters(puzzleData)
   }, [puzzleData])
