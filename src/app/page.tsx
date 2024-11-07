@@ -8,7 +8,7 @@ import { Flex, useBreakpointValue } from '@chakra-ui/react'
 
 export default function Home() {
   // TODO - load from somewhere
-  const puzzleData: PuzzleData = require('../example_puzzle.json')
+  const puzzleData: PuzzleData = require('../puzzles/sarah.json')
 
   const isMobile =
     useBreakpointValue({

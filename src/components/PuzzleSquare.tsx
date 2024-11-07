@@ -33,12 +33,13 @@ const PuzzleSquare = ({
   return (
     <Flex
       position="relative"
+      cursor="pointer"
       onClick={() => onSelectClueLetter(clueLetter)}
       borderColor="black"
       borderStyle="solid"
       borderWidth="0.5px"
-      height="80px"
-      width="80px"
+      height="70px"
+      width="70px"
       backgroundColor={backgroundColor}
       alignItems="center"
     >

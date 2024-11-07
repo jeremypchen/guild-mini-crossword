@@ -1,11 +1,12 @@
 import { mapToCluesAndClueLetters } from '@/app/utils'
 import ClueBar from '@/components/ClueBar'
 import EmptyPuzzleSquare from '@/components/EmptyPuzzleSquare'
+import MobileKeyboard from '@/components/MobileKeyboard'
 import PuzzleSquare from '@/components/PuzzleSquare'
 import Timer from '@/components/Timer'
 import { PuzzleData, Clue, ClueLetter } from '@/types'
-import { Flex, Text } from '@chakra-ui/react'
-import { use, useEffect, useMemo, useState } from 'react'
+import { Flex } from '@chakra-ui/react'
+import { useEffect, useMemo, useState } from 'react'
 
 const Puzzle = ({
   isMobile,
@@ -300,13 +301,7 @@ const Puzzle = ({
     <Flex direction="column" alignItems="center" paddingTop="30px">
       <Timer />
 
-      <Flex
-        // width={isMobile ? '100%' : '50%'}
-        direction="column"
-        borderColor="black"
-        borderStyle="solid"
-        borderWidth="5px"
-      >
+      <Flex direction="column" border="5px solid black">
         {Object.entries(clueLettersGroupedByRow).map(
           ([rowAsStr, clueLettersInRow]) => {
             return (
@@ -341,7 +336,10 @@ const Puzzle = ({
         onNextClue={onNextClue}
         onToggleDirection={onToggleDirection}
         clue={activeClue}
+        isMobile={isMobile}
       />
+
+      {isMobile && <MobileKeyboard onKeyPress={onKeyPress} />}
     </Flex>
   )
 }

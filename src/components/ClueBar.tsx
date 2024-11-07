@@ -8,16 +8,18 @@ const ClueBar = ({
   onNextClue,
   onToggleDirection,
   clue,
+  isMobile,
 }: {
   onPreviousClue: () => void
   onNextClue: () => void
   onToggleDirection: () => void
   clue: Clue
+  isMobile: boolean
 }) => {
   return (
     <Flex
-      marginTop="10px"
-      width="100%"
+      marginTop={isMobile ? '' : '10px'}
+      width="360px"
       alignItems="center"
       height="50px"
       backgroundColor="#FED9DA"

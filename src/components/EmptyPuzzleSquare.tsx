@@ -7,8 +7,8 @@ const EmptyPuzzleSquare = ({
 }) => {
   return (
     <Flex
-      height="80px"
-      width="80px"
+      height="70px"
+      width="70px"
       backgroundColor="#171719"
       opacity={isPuzzleFinished ? 0.2 : 1}
       borderColor="black"
