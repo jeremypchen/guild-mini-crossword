@@ -85,7 +85,7 @@ const BackspaceKey = ({
         borderRadius: 4,
       }}
       onClick={() => {
-        onKeyPress('<X')
+        onKeyPress('backspace')
       }}
     >
       <BsBackspace />

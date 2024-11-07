@@ -46,6 +46,9 @@ const Puzzle = ({
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Backspace') {
         onBackspace()
+      } else if (e.key === 'Tab') {
+        e.preventDefault()
+        onNextClue()
       }
     }
 
@@ -254,7 +257,13 @@ const Puzzle = ({
   }
 
   const onKeyPress = (character: string | null) => {
-    if (character === '<X') {
+    // if tab, go to next clue
+    if (character === 'tab') {
+      onNextClue()
+      return
+    }
+
+    if (character === 'backspace') {
       onBackspace()
       return
     }
