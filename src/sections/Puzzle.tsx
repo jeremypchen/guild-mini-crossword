@@ -178,8 +178,6 @@ const Puzzle = ({
   }
 
   const onBackspace = () => {
-    console.log('on backspace!')
-
     const currentClueLetterHasInput = clueLetterMap[activeClueLetterId].input
     const indexInClueAnswer = activeClue.clueLetters.findIndex(
       (clueLetter) => clueLetter.id === activeClueLetterId
@@ -318,7 +316,7 @@ const Puzzle = ({
         {Object.entries(clueLettersGroupedByRow).map(
           ([rowAsStr, clueLettersInRow]) => {
             return (
-              <Flex>
+              <Flex key={rowAsStr}>
                 {[1, 2, 3, 4, 5].map((x) => {
                   const clueLetter = clueLettersInRow.find((clueLetter) => {
                     return x === clueLetter.x
