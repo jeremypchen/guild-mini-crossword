@@ -2,7 +2,7 @@ import { timerSecondsToMinutes } from '@/app/utils'
 import { Text } from '@chakra-ui/react'
 import { useState, useEffect } from 'react'
 
-const Timer = () => {
+const Timer = ({ isMobile }: { isMobile: boolean }) => {
   const [timer, setTimer] = useState(0)
 
   useEffect(() => {
@@ -19,7 +19,11 @@ const Timer = () => {
   }, [])
 
   return (
-    <Text color="black" marginBottom="30px" fontSize="16px">
+    <Text
+      color="black"
+      marginBottom={isMobile ? '10px' : '30px'}
+      fontSize="16px"
+    >
       {timerSecondsToMinutes(timer)}
     </Text>
   )

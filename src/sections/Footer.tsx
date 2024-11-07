@@ -1,6 +1,6 @@
 import { Flex, Text } from '@chakra-ui/react'
 
-const Footer = () => {
+const Footer = ({ isMobile }: { isMobile: boolean }) => {
   return (
     <Flex
       width="100%"

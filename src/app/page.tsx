@@ -26,7 +26,7 @@ export default function Home() {
     >
       <Header isMobile={isMobile} />
       <Puzzle isMobile={isMobile} puzzleData={puzzleData} />
-      {!isMobile && <Footer />}
+      <Footer isMobile={isMobile} />
     </Flex>
   )
 }

@@ -298,8 +298,12 @@ const Puzzle = ({
   }
 
   return (
-    <Flex direction="column" alignItems="center" paddingTop="30px">
-      <Timer />
+    <Flex
+      direction="column"
+      alignItems="center"
+      paddingTop={isMobile ? '10px' : '30px'}
+    >
+      <Timer isMobile={isMobile} />
 
       <Flex direction="column" border="5px solid black">
         {Object.entries(clueLettersGroupedByRow).map(
