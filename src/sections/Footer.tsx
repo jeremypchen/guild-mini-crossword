@@ -6,8 +6,8 @@ const Footer = ({ isMobile }: { isMobile: boolean }) => {
       width="100%"
       backgroundColor="black"
       padding="30px"
-      position="absolute"
-      bottom="0px"
+      marginTop={isMobile ? '20px' : '40px'}
+      height="100vh"
     >
       <Text>We are the tech workers of The New York Times.</Text>
     </Flex>
