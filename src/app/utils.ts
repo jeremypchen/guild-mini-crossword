@@ -113,3 +113,31 @@ export const timerSecondsToMinutes = (seconds: number) => {
 
   return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`
 }
+
+export const checkPuzzleCompletion = (clueLetters: ClueLetter[]) => {
+  let isComplete = true
+  let isCorrect = true
+
+  if (!clueLetters.length)
+    return {
+      isComplete: false,
+      isCorrect: false,
+    }
+
+  for (const clueLetter of clueLetters) {
+    if (!clueLetter.input) {
+      return {
+        isComplete: false,
+        isCorrect: false,
+      }
+    }
+    if (clueLetter.input.toLowerCase() !== clueLetter.answer.toLowerCase()) {
+      isCorrect = false
+    }
+  }
+
+  return {
+    isComplete,
+    isCorrect,
+  }
+}

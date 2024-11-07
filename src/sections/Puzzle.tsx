@@ -1,9 +1,11 @@
 'use client'
 
-import { mapToCluesAndClueLetters } from '@/app/utils'
+import { checkPuzzleCompletion, mapToCluesAndClueLetters } from '@/app/utils'
 import ClueBar from '@/components/ClueBar'
 import EmptyPuzzleSquare from '@/components/EmptyPuzzleSquare'
 import MobileKeyboard from '@/components/MobileKeyboard'
+import PuzzleCompletedModal from '@/components/PuzzleCompletedModal'
+import PuzzleIncorrectModal from '@/components/PuzzleIncorrectModal'
 import PuzzleSquare from '@/components/PuzzleSquare'
 import Timer from '@/components/Timer'
 import { PuzzleData, Clue, ClueLetter } from '@/types'
@@ -42,12 +44,14 @@ const Puzzle = ({ puzzleData }: { puzzleData: PuzzleData }) => {
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       const character = e.key.toUpperCase()
+      // needs to be a letter
+      if (!/^[a-zA-Z]$/.test(character)) return
       onKeyPress(character)
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Backspace') {
-        onBackspace()
+        onKeyPress('backspace')
       } else if (e.key === 'Tab') {
         e.preventDefault()
         onNextClue()
@@ -61,9 +65,12 @@ const Puzzle = ({ puzzleData }: { puzzleData: PuzzleData }) => {
       window.removeEventListener('keypress', handleKeyPress)
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [activeClueLetterId, activeClue])
+  }, [activeClueLetterId, activeClue, clueLetterMap])
 
-  const isPuzzleFinished = false // TODO!
+  const { isComplete: isPuzzleFilledOut, isCorrect: isPuzzleCorrect } =
+    useMemo(() => {
+      return checkPuzzleCompletion(Object.values(clueLetterMap))
+    }, [clueLetterMap])
 
   let activeDirection = activeClue.direction
 
@@ -126,7 +133,7 @@ const Puzzle = ({ puzzleData }: { puzzleData: PuzzleData }) => {
 
       // if next clue has no empty clue letters, then go to the next clue
       for (const clueLetter of nextClue.clueLetters) {
-        if (isPuzzleFinished || !clueLetterMap[clueLetter.id].input) {
+        if (isPuzzleFilledOut || !clueLetterMap[clueLetter.id].input) {
           setActiveClue(nextClue)
           setActiveClueLetterId(clueLetter.id)
           return
@@ -166,7 +173,7 @@ const Puzzle = ({ puzzleData }: { puzzleData: PuzzleData }) => {
 
       // if next clue has no empty clue letters, then go to the next clue
       for (const clueLetter of nextClue.clueLetters) {
-        if (isPuzzleFinished || !clueLetterMap[clueLetter.id].input) {
+        if (isPuzzleFilledOut || !clueLetterMap[clueLetter.id].input) {
           setActiveClue(nextClue)
           setActiveClueLetterId(clueLetter.id)
           return
@@ -257,12 +264,6 @@ const Puzzle = ({ puzzleData }: { puzzleData: PuzzleData }) => {
   }
 
   const onKeyPress = (character: string | null) => {
-    // if tab, go to next clue
-    if (character === 'tab') {
-      onNextClue()
-      return
-    }
-
     if (character === 'backspace') {
       onBackspace()
       return
@@ -306,6 +307,18 @@ const Puzzle = ({ puzzleData }: { puzzleData: PuzzleData }) => {
     onNextClue()
   }
 
+  const [showPuzzleIncorrectModal, setShowPuzzleIncorrectModal] =
+    useState(false)
+  const [showPuzzleCorrectModal, setShowPuzzleCorrectModal] = useState(false)
+
+  useEffect(() => {
+    if (isPuzzleFilledOut && isPuzzleCorrect) {
+      setShowPuzzleCorrectModal(true)
+    } else if (isPuzzleFilledOut && !isPuzzleCorrect) {
+      setShowPuzzleIncorrectModal(true)
+    }
+  }, [isPuzzleFilledOut])
+
   return (
     <Flex
       direction="column"
@@ -313,6 +326,18 @@ const Puzzle = ({ puzzleData }: { puzzleData: PuzzleData }) => {
       paddingTop={isMobile ? '10px' : '30px'}
     >
       <Timer isMobile={isMobile} />
+
+      {showPuzzleIncorrectModal && (
+        <PuzzleIncorrectModal
+          onClose={() => setShowPuzzleIncorrectModal(false)}
+        />
+      )}
+
+      {showPuzzleCorrectModal && (
+        <PuzzleCompletedModal
+          onClose={() => setShowPuzzleCorrectModal(false)}
+        />
+      )}
 
       <Flex direction="column" border="5px solid black">
         {Object.entries(clueLettersGroupedByRow).map(
@@ -332,10 +357,7 @@ const Puzzle = ({ puzzleData }: { puzzleData: PuzzleData }) => {
                       onSelectClueLetter={() => onToggleDirection(clueLetter)}
                     />
                   ) : (
-                    <EmptyPuzzleSquare
-                      key={`empty-row:${rowAsStr}-${x}`}
-                      isPuzzleFinished={isPuzzleFinished}
-                    />
+                    <EmptyPuzzleSquare key={`empty-row:${rowAsStr}-${x}`} />
                   )
                 })}
               </Flex>
