@@ -72,6 +72,7 @@ const Footer = () => {
           src="/guild_icon.svg"
           boxSize="60px"
           marginTop={isMobile ? '20px' : ''}
+          alt="NYT Tech Guild Logo"
         />
       </Flex>
     </Flex>

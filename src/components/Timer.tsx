@@ -1,6 +1,6 @@
 import { timerSecondsToMinutes } from '@/app/utils'
 import { Text } from '@chakra-ui/react'
-import { useState, useEffect, SetStateAction } from 'react'
+import { useEffect, SetStateAction } from 'react'
 
 const Timer = ({
   isMobile,
@@ -26,7 +26,7 @@ const Timer = ({
     return () => {
       clearInterval(interval)
     }
-  }, [stopTimer])
+  }, [setTimer, stopTimer])
 
   return (
     <Text

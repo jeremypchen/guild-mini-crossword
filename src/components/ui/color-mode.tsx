@@ -1,11 +1,13 @@
-"use client"
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 
-import type { IconButtonProps } from "@chakra-ui/react"
-import { ClientOnly, IconButton, Skeleton } from "@chakra-ui/react"
-import { ThemeProvider, useTheme } from "next-themes"
-import type { ThemeProviderProps } from "next-themes"
-import { forwardRef } from "react"
-import { LuMoon, LuSun } from "react-icons/lu"
+'use client'
+
+import type { IconButtonProps } from '@chakra-ui/react'
+import { ClientOnly, IconButton, Skeleton } from '@chakra-ui/react'
+import { ThemeProvider, useTheme } from 'next-themes'
+import type { ThemeProviderProps } from 'next-themes'
+import { forwardRef } from 'react'
+import { LuMoon, LuSun } from 'react-icons/lu'
 
 export interface ColorModeProviderProps extends ThemeProviderProps {}
 
@@ -18,7 +20,7 @@ export function ColorModeProvider(props: ColorModeProviderProps) {
 export function useColorMode() {
   const { resolvedTheme, setTheme } = useTheme()
   const toggleColorMode = () => {
-    setTheme(resolvedTheme === "light" ? "dark" : "light")
+    setTheme(resolvedTheme === 'light' ? 'dark' : 'light')
   }
   return {
     colorMode: resolvedTheme,
@@ -29,15 +31,15 @@ export function useColorMode() {
 
 export function useColorModeValue<T>(light: T, dark: T) {
   const { colorMode } = useColorMode()
-  return colorMode === "light" ? light : dark
+  return colorMode === 'light' ? light : dark
 }
 
 export function ColorModeIcon() {
   const { colorMode } = useColorMode()
-  return colorMode === "light" ? <LuSun /> : <LuMoon />
+  return colorMode === 'light' ? <LuSun /> : <LuMoon />
 }
 
-interface ColorModeButtonProps extends Omit<IconButtonProps, "aria-label"> {}
+interface ColorModeButtonProps extends Omit<IconButtonProps, 'aria-label'> {}
 
 export const ColorModeButton = forwardRef<
   HTMLButtonElement,
@@ -55,8 +57,8 @@ export const ColorModeButton = forwardRef<
         {...props}
         css={{
           _icon: {
-            width: "5",
-            height: "5",
+            width: '5',
+            height: '5',
           },
         }}
       >

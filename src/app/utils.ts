@@ -115,7 +115,7 @@ export const timerSecondsToMinutes = (seconds: number) => {
 }
 
 export const checkPuzzleCompletion = (clueLetters: ClueLetter[]) => {
-  let isComplete = true
+  const isComplete = true
   let isCorrect = true
 
   if (!clueLetters.length)

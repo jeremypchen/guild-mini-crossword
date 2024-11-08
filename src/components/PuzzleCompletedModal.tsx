@@ -40,7 +40,7 @@ const PuzzleCompletedModal = ({
         X
       </Button>
 
-      <Image src="/guild_icon_2.svg" width="60px" />
+      <Image src="/guild_icon_2.svg" width="60px" alt="NYT Tech Guild Logo" />
       <Text
         fontSize="40px"
         color="black"
@@ -51,8 +51,8 @@ const PuzzleCompletedModal = ({
         You did it!
       </Text>
       <Text color="black">
-        You supported the Times Tech Guild by playing the Tech Guild's Strike
-        edition of the Mini.
+        You supported the Times Tech Guild by playing the Tech Guild&apos;s
+        Strike edition of the Mini.
       </Text>
 
       <Flex
