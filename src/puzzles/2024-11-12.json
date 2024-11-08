@@ -1,0 +1,119 @@
+{
+  "metadata": { "id": "Ronnie-March", "date": "" },
+  "data": {
+    "across": [
+      {
+        "id": "1_across",
+        "partnerClueId": "1_down",
+        "number": 1,
+        "clue": "\"The ___ Side\" by Gary Larson",
+        "answer": "FAR",
+        "originX": 3,
+        "originY": 1,
+        "endX": 5,
+        "endY": 1
+      },
+      {
+        "id": "4_across",
+        "partnerClueId": "4_down",
+        "number": 4,
+        "clue": "Spanish for",
+        "answer": "PARA",
+        "originX": 2,
+        "originY": 2,
+        "endX": 5,
+        "endY": 2
+      },
+      {
+        "id": "5_across",
+        "partnerClueId": "5_down",
+        "number": 5,
+        "clue": "We __ for Just Cause, Fair Pay, and RTO protections",
+        "answer": "MARCH",
+        "originX": 1,
+        "originY": 3,
+        "endX": 5,
+        "endY": 3
+      },
+      {
+        "id": "6_across",
+        "partnerClueId": null,
+        "number": 6,
+        "clue": "In your back",
+        "answer": "ARCH",
+        "originX": 1,
+        "originY": 4,
+        "endX": 4,
+        "endY": 4
+      },
+      {
+        "id": "7_across",
+        "partnerClueId": null,
+        "number": 7,
+        "clue": "Casual shirt",
+        "answer": "TEE",
+        "originX": 1,
+        "originY": 5,
+        "endX": 3,
+        "endY": 5
+      }
+    ],
+    "down": [
+      {
+        "id": "1_down",
+        "partnerClueId": "1_across",
+        "number": 1,
+        "clue": "A comic dramatic work using buffoonery",
+        "answer": "FARCE",
+        "originX": 3,
+        "originY": 1,
+        "endX": 3,
+        "endY": 5
+      },
+      {
+        "id": "2_down",
+        "partnerClueId": null,
+        "number": 2,
+        "clue": "In your foot",
+        "answer": "ARCH",
+        "originX": 4,
+        "originY": 1,
+        "endX": 4,
+        "endY": 4
+      },
+      {
+        "id": "3_down",
+        "partnerClueId": null,
+        "number": 3,
+        "clue": "Cheerleading chant when repeated",
+        "answer": "RAH",
+        "originX": 5,
+        "originY": 1,
+        "endX": 5,
+        "endY": 3
+      },
+      {
+        "id": "4_down",
+        "partnerClueId": "4_across",
+        "number": 4,
+        "clue": "Cut off",
+        "answer": "PARE",
+        "originX": 2,
+        "originY": 2,
+        "endX": 2,
+        "endY": 5
+      },
+      {
+        "id": "5_down",
+        "partnerClueId": "5_across",
+        "number": 5,
+        "clue": "Yoga ___",
+        "answer": "MAT",
+        "originX": 1,
+        "originY": 3,
+        "endX": 1,
+        "endY": 5
+      }
+    ]
+  }
+}

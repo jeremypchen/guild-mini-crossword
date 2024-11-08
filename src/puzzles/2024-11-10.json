@@ -1,0 +1,119 @@
+{
+  "metadata": { "id": "Chris-Chi-Labor", "date": "" },
+  "data": {
+    "across": [
+      {
+        "id": "1_across",
+        "partnerClueId": "1_down",
+        "number": 1,
+        "clue": "Large, graceful bird",
+        "answer": "SWAN",
+        "originX": 2,
+        "originY": 1,
+        "endX": 5,
+        "endY": 1
+      },
+      {
+        "id": "5_across",
+        "partnerClueId": null,
+        "number": 5,
+        "clue": "Aid",
+        "answer": "HELP",
+        "originX": 2,
+        "originY": 2,
+        "endX": 5,
+        "endY": 2
+      },
+      {
+        "id": "6_across",
+        "partnerClueId": "6_down",
+        "number": 6,
+        "clue": "To work hard or make great effort",
+        "answer": "LABOR",
+        "originX": 1,
+        "originY": 3,
+        "endX": 5,
+        "endY": 3
+      },
+      {
+        "id": "7_across",
+        "partnerClueId": null,
+        "number": 7,
+        "clue": "Microwave or convection",
+        "answer": "OVEN",
+        "originX": 1,
+        "originY": 4,
+        "endX": 4,
+        "endY": 4
+      },
+      {
+        "id": "8_across",
+        "partnerClueId": null,
+        "number": 8,
+        "clue": "Actor Richard ____",
+        "answer": "GERE",
+        "originX": 1,
+        "originY": 5,
+        "endX": 4,
+        "endY": 5
+      }
+    ],
+    "down": [
+      {
+        "id": "1_down",
+        "partnerClueId": "1_across",
+        "number": 1,
+        "clue": "Cut off or pare",
+        "answer": "SHAVE",
+        "originX": 2,
+        "originY": 1,
+        "endX": 2,
+        "endY": 5
+      },
+      {
+        "id": "2_down",
+        "partnerClueId": null,
+        "number": 2,
+        "clue": "American manufacturer of grills",
+        "answer": "WEBER",
+        "originX": 3,
+        "originY": 1,
+        "endX": 3,
+        "endY": 5
+      },
+      {
+        "id": "3_down",
+        "partnerClueId": null,
+        "number": 3,
+        "clue": "Solitary",
+        "answer": "ALONE",
+        "originX": 4,
+        "originY": 1,
+        "endX": 4,
+        "endY": 5
+      },
+      {
+        "id": "4_down",
+        "partnerClueId": null,
+        "number": 4,
+        "clue": "Home to \"Wait Wait...Don't Tell Me!\" and \"All Things Considered\"",
+        "answer": "NPR",
+        "originX": 5,
+        "originY": 1,
+        "endX": 5,
+        "endY": 3
+      },
+      {
+        "id": "6_down",
+        "partnerClueId": "6_across",
+        "number": 6,
+        "clue": "Enter into record",
+        "answer": "LOG",
+        "originX": 1,
+        "originY": 3,
+        "endX": 1,
+        "endY": 5
+      }
+    ]
+  }
+}

@@ -25,7 +25,7 @@ const Home = async () => {
 const loadPuzzle = async (): Promise<PuzzleData> => {
   // TODO - load puzzle from somewherewith the closest date to today
   /* eslint-disable @typescript-eslint/no-require-imports */
-  return require('../puzzles/sarah.json')
+  return require('../puzzles/2024-11-09.json')
 }
 
 export default Home

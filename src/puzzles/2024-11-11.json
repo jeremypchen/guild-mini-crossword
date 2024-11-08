@@ -1,0 +1,119 @@
+{
+  "metadata": { "id": "Chris-Chi-Just-Cause", "date": "" },
+  "data": {
+    "across": [
+      {
+        "id": "1_across",
+        "partnerClueId": "1_down",
+        "number": 1,
+        "clue": "With 7-Across, what the NYT Tech Guild is fighting for",
+        "answer": "JUST",
+        "originX": 1,
+        "originY": 1,
+        "endX": 4,
+        "endY": 1
+      },
+      {
+        "id": "5_across",
+        "partnerClueId": null,
+        "number": 5,
+        "clue": "What may be stored in an urn",
+        "answer": "ASHES",
+        "originX": 1,
+        "originY": 2,
+        "endX": 5,
+        "endY": 2
+      },
+      {
+        "id": "7_across",
+        "partnerClueId": null,
+        "number": 7,
+        "clue": "With 1-Across, what the NYT Tech Guild is fighting for",
+        "answer": "CAUSE",
+        "originX": 1,
+        "originY": 3,
+        "endX": 5,
+        "endY": 3
+      },
+      {
+        "id": "8_across",
+        "partnerClueId": null,
+        "number": 8,
+        "clue": "Scottish knee-length garments ",
+        "answer": "KILTS",
+        "originX": 1,
+        "originY": 4,
+        "endX": 5,
+        "endY": 4
+      },
+      {
+        "id": "9_across",
+        "partnerClueId": null,
+        "number": 9,
+        "clue": "3x NBA MVP PG Steve ____",
+        "answer": "NASH",
+        "originX": 2,
+        "originY": 5,
+        "endX": 5,
+        "endY": 5
+      }
+    ],
+    "down": [
+      {
+        "id": "1_down",
+        "partnerClueId": "1_across",
+        "number": 1,
+        "clue": "Device for lifting heavy object",
+        "answer": "JACK",
+        "originX": 1,
+        "originY": 1,
+        "endX": 1,
+        "endY": 4
+      },
+      {
+        "id": "2_down",
+        "partnerClueId": null,
+        "number": 2,
+        "clue": "Aptly named sprinter _____ Bolt",
+        "answer": "USAIN",
+        "originX": 2,
+        "originY": 1,
+        "endX": 2,
+        "endY": 5
+      },
+      {
+        "id": "3_down",
+        "partnerClueId": null,
+        "number": 3,
+        "clue": "Coach of the NFL's only undefeated team",
+        "answer": "SHULA",
+        "originX": 3,
+        "originY": 1,
+        "endX": 3,
+        "endY": 5
+      },
+      {
+        "id": "4_down",
+        "partnerClueId": null,
+        "number": 4,
+        "clue": "Assessments",
+        "answer": "TESTS",
+        "originX": 4,
+        "originY": 1,
+        "endX": 4,
+        "endY": 5
+      },
+      {
+        "id": "6_down",
+        "partnerClueId": null,
+        "number": 6,
+        "clue": "Period of time, informally",
+        "answer": "SESH",
+        "originX": 5,
+        "originY": 2,
+        "endX": 5,
+        "endY": 5
+      }
+    ]
+  }
+}
