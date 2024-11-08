@@ -133,7 +133,6 @@ const PuzzleCompletedModal = ({
       zIndex={2}
       position="absolute"
       top={isMobile ? '50px' : '100px'}
-      height={isMobile ? '' : '600px'}
       width={isMobile ? '360px' : '600px'}
       backgroundColor="#FED9DA"
       boxShadow="xs"

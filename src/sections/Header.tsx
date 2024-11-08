@@ -2,14 +2,7 @@
 import { crimson_pro } from '@/app/fonts'
 import { daysSinceStrike } from '@/app/utils'
 import StrikeFundButton from '@/components/StrikeFundButton'
-import {
-  Badge,
-  Button,
-  Flex,
-  Image,
-  Text,
-  useBreakpointValue,
-} from '@chakra-ui/react'
+import { Badge, Flex, Text, useBreakpointValue } from '@chakra-ui/react'
 
 const Header = () => {
   const isMobile =
