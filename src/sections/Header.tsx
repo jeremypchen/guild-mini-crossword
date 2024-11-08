@@ -10,6 +10,10 @@ const Header = () => {
       md: false,
     }) || false
 
+  if (isMobile) {
+    return <MobileHeader />
+  }
+
   return (
     <Flex
       width="100%"
@@ -19,9 +23,8 @@ const Header = () => {
       borderBottom="1px"
       borderStyle="solid"
       direction="column"
-      color="black"
     >
-      <Flex justifyContent="space-between">
+      <Flex justifyContent="space-between" color="black">
         <Flex gap="16px" fontSize="14px">
           <Flex direction="column">
             <Text fontWeight="bold" borderBottom="4px solid black">
@@ -47,14 +50,18 @@ const Header = () => {
           onClick={() =>
             window.open('https://www.gofundme.com/f/nyt-tech-strike-fund')
           }
+          fontWeight="semibold"
+          background="gray.300"
+          rounded="sm"
+          paddingX="6px"
         >
           Strike Fund
         </Button>
       </Flex>
 
-      <Flex direction="column">
+      <Flex direction="column" width="450px" alignSelf="center" color="black">
         <Text
-          marginTop="20px"
+          marginTop="0px"
           color="black"
           fontSize="30px"
           className={crimson_pro.className}
@@ -63,10 +70,10 @@ const Header = () => {
           The Mini Crossword: Strike Edition
         </Text>
 
-        <Flex width="100%" justifyContent="space-between" marginTop="10px">
-          <Text>By The NYT Tech Guild</Text>
+        <Flex width="100%" justifyContent="space-between" marginTop="6px">
+          <Text fontSize="15px">By The NYT Tech Guild</Text>
           <Flex gap="4px">
-            <Text>Strike:</Text>
+            <Text fontSize="15px">Strike:</Text>
             <Badge
               background="red"
               paddingY="4px"
@@ -79,6 +86,33 @@ const Header = () => {
             </Badge>
           </Flex>
         </Flex>
+      </Flex>
+    </Flex>
+  )
+}
+
+const MobileHeader = () => {
+  return (
+    <Flex
+      width="100%"
+      paddingY="14px"
+      borderColor="gray.300"
+      borderBottom="1px"
+      borderStyle="solid"
+      justifyContent="center"
+    >
+      <Flex gap="4px" color="black">
+        <Text fontSize="18px">Strike:</Text>
+        <Badge
+          background="red"
+          paddingY="4px"
+          paddingX="6px"
+          color="white"
+          fontWeight="bold"
+          fontSize="16px"
+        >
+          DAY {daysSinceStrike()}
+        </Badge>
       </Flex>
     </Flex>
   )

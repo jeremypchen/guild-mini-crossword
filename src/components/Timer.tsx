@@ -31,7 +31,7 @@ const Timer = ({
   return (
     <Text
       color="black"
-      marginBottom={isMobile ? '10px' : '30px'}
+      marginBottom={isMobile ? '10px' : '20px'}
       fontSize="16px"
     >
       {timerSecondsToMinutes(timer)}

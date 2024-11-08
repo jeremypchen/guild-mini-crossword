@@ -325,7 +325,7 @@ const Puzzle = ({ puzzleData }: { puzzleData: PuzzleData }) => {
     <Flex
       direction="column"
       alignItems="center"
-      paddingTop={isMobile ? '10px' : '30px'}
+      paddingTop={isMobile ? '10px' : '20px'}
     >
       <Timer
         isMobile={isMobile}
