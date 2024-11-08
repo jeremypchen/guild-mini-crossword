@@ -141,3 +141,11 @@ export const checkPuzzleCompletion = (clueLetters: ClueLetter[]) => {
     isCorrect,
   }
 }
+
+export const daysSinceStrike = () => {
+  const strikeDate = new Date('2024-11-4')
+  const currentDate = new Date()
+  const timeDiff = Math.abs(currentDate.getTime() - strikeDate.getTime())
+  const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24))
+  return diffDays
+}

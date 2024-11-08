@@ -1,5 +1,5 @@
 import { crimson_pro } from '@/app/fonts'
-import { timerSecondsToMinutes } from '@/app/utils'
+import { daysSinceStrike, timerSecondsToMinutes } from '@/app/utils'
 import { Button, Flex, useBreakpointValue, Image, Text } from '@chakra-ui/react'
 import { IoShareSocialOutline } from 'react-icons/io5'
 
@@ -124,14 +124,6 @@ const PuzzleCompletedModal = ({
       </Text>
     </Flex>
   )
-}
-
-const daysSinceStrike = () => {
-  const strikeDate = new Date('2024-11-4')
-  const currentDate = new Date()
-  const timeDiff = Math.abs(currentDate.getTime() - strikeDate.getTime())
-  const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24))
-  return diffDays
 }
 
 const daysSinceNegotiation = () => {
