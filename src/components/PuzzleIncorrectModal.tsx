@@ -1,3 +1,4 @@
+import { crimson_pro } from '@/app/fonts'
 import { Button, Flex, Text, useBreakpointValue } from '@chakra-ui/react'
 
 const PuzzleIncorrectModal = ({ onClose }: { onClose: () => void }) => {
@@ -26,7 +27,12 @@ const PuzzleIncorrectModal = ({ onClose }: { onClose: () => void }) => {
       <Button position="absolute" top="0px" right="0px" onClick={onClose}>
         X
       </Button>
-      <Text textAlign="center" fontWeight="bold" fontSize="32px">
+      <Text
+        textAlign="center"
+        fontWeight="bold"
+        fontSize="40px"
+        className={crimson_pro.className}
+      >
         Almost there!
       </Text>
       <Text textAlign="center" marginTop="10px">
@@ -38,7 +44,7 @@ const PuzzleIncorrectModal = ({ onClose }: { onClose: () => void }) => {
         onClick={onClose}
         size="lg"
         fontSize="18px"
-        rounded="md"
+        rounded="sm"
         paddingX="30px"
         background="black"
         color="white"

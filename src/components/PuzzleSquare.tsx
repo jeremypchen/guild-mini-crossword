@@ -57,7 +57,7 @@ const PuzzleSquare = ({
         </Text>
       )}
       <Flex alignItems="center" justifyContent="center" width="100%">
-        <Text color="black" fontSize="50px" userSelect="none">
+        <Text color="black" fontSize="40px" userSelect="none">
           {clueLetter.input}
         </Text>
       </Flex>

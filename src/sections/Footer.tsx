@@ -1,5 +1,6 @@
 'use client'
 
+import { crimson_pro } from '@/app/fonts'
 import { Flex, Text, useBreakpointValue } from '@chakra-ui/react'
 
 const Footer = () => {
@@ -17,7 +18,9 @@ const Footer = () => {
       marginTop={isMobile ? '20px' : '40px'}
       height="100vh"
     >
-      <Text>We are the tech workers of The New York Times.</Text>
+      <Text className={crimson_pro.className} fontWeight="bold" fontSize="20px">
+        We are the tech workers of The New York Times.
+      </Text>
     </Flex>
   )
 }

@@ -1,3 +1,4 @@
+import { crimson_pro } from '@/app/fonts'
 import { timerSecondsToMinutes } from '@/app/utils'
 import { Button, Flex, useBreakpointValue, Image, Text } from '@chakra-ui/react'
 import { IoShareSocialOutline } from 'react-icons/io5'
@@ -39,8 +40,14 @@ const PuzzleCompletedModal = ({
         X
       </Button>
 
-      <Image src="/guild_icon.svg" width="60px" />
-      <Text fontSize="34px" color="black" fontWeight="bold" marginTop="10px">
+      <Image src="/guild_icon_2.svg" width="60px" />
+      <Text
+        fontSize="40px"
+        color="black"
+        fontWeight="bold"
+        marginTop="10px"
+        className={crimson_pro.className}
+      >
         You did it!
       </Text>
       <Text color="black">
@@ -60,8 +67,9 @@ const PuzzleCompletedModal = ({
           <Text fontSize="36px" color="#B42E2F" fontWeight="bold">
             {timerSecondsToMinutes(secondsToComplete)}
           </Text>
-          <Text width="80px" textAlign="center" color="black">
-            Time to complete
+          <Text textAlign="center" color="black">
+            Time to <br />
+            complete
           </Text>
         </Flex>
 
@@ -69,8 +77,9 @@ const PuzzleCompletedModal = ({
           <Text fontSize="36px" color="#B42E2F" fontWeight="bold">
             {daysSinceStrike()}
           </Text>
-          <Text width="80px" textAlign="center" color="black">
-            Days on strike
+          <Text textAlign="center" color="black">
+            Days <br />
+            on strike
           </Text>
         </Flex>
 
@@ -78,14 +87,14 @@ const PuzzleCompletedModal = ({
           <Text fontSize="36px" color="#B42E2F" fontWeight="bold">
             {daysSinceNegotiation()}
           </Text>
-          <Text width="120px" textAlign="center" color="black">
-            Days negotiating a fair contract
+          <Text textAlign="center" color="black">
+            Days negotiating <br />a fair contract
           </Text>
         </Flex>
       </Flex>
 
       <Button alignSelf="flex-end" background="transparent">
-        <Flex gap="4px" fontWeight="bold">
+        <Flex gap="4px" fontWeight="semibold">
           Share your results
           <IoShareSocialOutline />
         </Flex>
@@ -95,8 +104,9 @@ const PuzzleCompletedModal = ({
         color="white"
         backgroundColor="#B42F2F"
         fontWeight="bold"
-        fontSize={isMobile ? '16px' : '24px'}
+        fontSize={isMobile ? '16px' : '22px'}
         paddingY="30px"
+        rounded="xs"
         onClick={() =>
           window.open('https://nytimesguild.org/tech/guild-builds/index.html')
         }

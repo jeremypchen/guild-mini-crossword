@@ -1,5 +1,5 @@
 'use client'
-
+import { crimson_pro } from '@/app/fonts'
 import { Flex, Text, useBreakpointValue } from '@chakra-ui/react'
 
 const Header = () => {
@@ -17,8 +17,13 @@ const Header = () => {
       borderBottom="1px"
       borderStyle="solid"
     >
-      <Text color="black" fontSize="30px">
-        The Mini Crossword: Strike Edition {isMobile ? 'Mobile' : 'Desktop'}
+      <Text
+        color="black"
+        fontSize="30px"
+        className={crimson_pro.className}
+        fontWeight="bold"
+      >
+        The Mini Crossword: Strike Edition
       </Text>
     </Flex>
   )
