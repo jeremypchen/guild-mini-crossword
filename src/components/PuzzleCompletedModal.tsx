@@ -1,7 +1,7 @@
 import { crimson_pro } from '@/app/fonts'
 import { daysSinceStrike, timerSecondsToMinutes } from '@/app/utils'
 import { Button, Flex, useBreakpointValue, Image, Text } from '@chakra-ui/react'
-import { IoShareSocialOutline } from 'react-icons/io5'
+// import { IoShareSocialOutline } from 'react-icons/io5'
 
 const PuzzleCompletedModal = ({
   secondsToComplete,
