@@ -327,6 +327,11 @@ const Puzzle = ({ puzzleData }: { puzzleData: PuzzleData }) => {
       alignItems="center"
       paddingTop={isMobile ? '10px' : '20px'}
     >
+       <PuzzleCompletedModal
+          secondsToComplete={100}
+          onClose={() => setShowPuzzleCorrectModal(false)}
+        />
+
       <Timer
         isMobile={isMobile}
         timer={timer}
