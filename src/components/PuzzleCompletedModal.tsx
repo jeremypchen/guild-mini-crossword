@@ -93,14 +93,15 @@ const PuzzleCompletedModal = ({
         </Flex>
       </Flex>
 
-      <Button alignSelf="flex-end" background="transparent">
+      {/* <Button alignSelf="flex-end" background="transparent">
         <Flex gap="4px" fontWeight="semibold">
           Share your results
           <IoShareSocialOutline />
         </Flex>
-      </Button>
+      </Button> */}
+
       <Button
-        marginTop="20px"
+        marginTop="40px"
         color="white"
         backgroundColor="#B42F2F"
         fontWeight="bold"
