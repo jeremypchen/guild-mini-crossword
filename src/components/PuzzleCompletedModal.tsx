@@ -221,9 +221,8 @@ const PuzzleCompletedModal = ({
         </Button>
       </Flex>
 
-
       <Link
-        marginTop="20px"
+        marginTop="40px"
         color="white"
         backgroundColor="#B42F2F"
         fontWeight="bold"

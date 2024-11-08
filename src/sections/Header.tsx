@@ -1,7 +1,15 @@
 'use client'
 import { crimson_pro } from '@/app/fonts'
 import { daysSinceStrike } from '@/app/utils'
-import { Badge, Button, Flex, Text, useBreakpointValue } from '@chakra-ui/react'
+import StrikeFundButton from '@/components/StrikeFundButton'
+import {
+  Badge,
+  Button,
+  Flex,
+  Image,
+  Text,
+  useBreakpointValue,
+} from '@chakra-ui/react'
 
 const Header = () => {
   const isMobile =
@@ -46,18 +54,10 @@ const Header = () => {
           </Text>
         </Flex>
 
-        <Button
-          onClick={() =>
-            window.open('https://www.gofundme.com/f/nyt-tech-strike-fund')
-          }
-          fontWeight="semibold"
-          background="#FED9DA"
-          rounded="sm"
-          paddingX="10px"
-          size="sm"
-        >
-          Strike Fund
-        </Button>
+        <Flex alignItems="center" gap="6px">
+          <Text fontSize="14px">Support our ULP strike</Text>
+          <StrikeFundButton variant="red" />
+        </Flex>
       </Flex>
 
       <Flex direction="column" width="450px" alignSelf="center" color="black">
@@ -75,16 +75,7 @@ const Header = () => {
           <Text fontSize="15px">By The NYT Tech Guild</Text>
           <Flex gap="4px">
             <Text fontSize="15px">Strike:</Text>
-            <Badge
-              background="red"
-              paddingY="4px"
-              paddingX="6px"
-              color="white"
-              fontWeight="bold"
-              fontSize="16px"
-            >
-              DAY {daysSinceStrike()}
-            </Badge>
+            <DaysOnStrikeBadge />
           </Flex>
         </Flex>
       </Flex>
@@ -104,18 +95,25 @@ const MobileHeader = () => {
     >
       <Flex gap="4px" color="black">
         <Text fontSize="18px">Strike:</Text>
-        <Badge
-          background="red"
-          paddingY="4px"
-          paddingX="6px"
-          color="white"
-          fontWeight="bold"
-          fontSize="16px"
-        >
-          DAY {daysSinceStrike()}
-        </Badge>
+        <DaysOnStrikeBadge />
       </Flex>
     </Flex>
+  )
+}
+
+const DaysOnStrikeBadge = () => {
+  return (
+    <Badge
+      background="white"
+      border="1px solid red"
+      paddingY="3px"
+      paddingX="6px"
+      color="red"
+      fontWeight="bold"
+      fontSize="15px"
+    >
+      DAY {daysSinceStrike()}
+    </Badge>
   )
 }
 
