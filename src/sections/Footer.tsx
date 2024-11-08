@@ -14,7 +14,7 @@ const Footer = () => {
     <Flex
       width="100%"
       backgroundColor="#1E1E1E"
-      paddingX="40px"
+      paddingX="36px"
       paddingTop="24px"
       marginTop={isMobile ? '20px' : '20px'}
       paddingBottom={isMobile ? '20px' : ''}

@@ -51,9 +51,10 @@ const Header = () => {
             window.open('https://www.gofundme.com/f/nyt-tech-strike-fund')
           }
           fontWeight="semibold"
-          background="gray.300"
+          background="#FED9DA"
           rounded="sm"
-          paddingX="6px"
+          paddingX="10px"
+          size="sm"
         >
           Strike Fund
         </Button>
