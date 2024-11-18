@@ -1,7 +1,6 @@
 'use client'
 
 import { crimson_pro } from '@/app/fonts'
-import StrikeFundButton from '@/components/StrikeFundButton'
 import { Flex, Text, useBreakpointValue, Image, Link } from '@chakra-ui/react'
 
 const Footer = () => {

@@ -1,8 +1,6 @@
 'use client'
 import { crimson_pro } from '@/app/fonts'
-import { daysSinceStrike } from '@/app/utils'
-import StrikeFundButton from '@/components/StrikeFundButton'
-import { Badge, Flex, Text, useBreakpointValue } from '@chakra-ui/react'
+import { Flex, Text, useBreakpointValue } from '@chakra-ui/react'
 
 const Header = () => {
   const isMobile =
@@ -77,38 +75,38 @@ const Header = () => {
   )
 }
 
-const MobileHeader = () => {
-  return (
-    <Flex
-      width="100%"
-      paddingY="14px"
-      borderColor="gray.300"
-      borderBottom="1px"
-      borderStyle="solid"
-      justifyContent="center"
-    >
-      <Flex gap="4px" color="black">
-        <Text fontSize="18px">Strike:</Text>
-        <DaysOnStrikeBadge />
-      </Flex>
-    </Flex>
-  )
-}
+// const MobileHeader = () => {
+//   return (
+//     <Flex
+//       width="100%"
+//       paddingY="14px"
+//       borderColor="gray.300"
+//       borderBottom="1px"
+//       borderStyle="solid"
+//       justifyContent="center"
+//     >
+//       <Flex gap="4px" color="black">
+//         <Text fontSize="18px">Strike:</Text>
+//         <DaysOnStrikeBadge />
+//       </Flex>
+//     </Flex>
+//   )
+// }
 
-const DaysOnStrikeBadge = () => {
-  return (
-    <Badge
-      background="white"
-      border="1px solid red"
-      paddingY="3px"
-      paddingX="6px"
-      color="red"
-      fontWeight="bold"
-      fontSize="15px"
-    >
-      DAY {daysSinceStrike()}
-    </Badge>
-  )
-}
+// const DaysOnStrikeBadge = () => {
+//   return (
+//     <Badge
+//       background="white"
+//       border="1px solid red"
+//       paddingY="3px"
+//       paddingX="6px"
+//       color="red"
+//       fontWeight="bold"
+//       fontSize="15px"
+//     >
+//       DAY {daysSinceStrike()}
+//     </Badge>
+//   )
+// }
 
 export default Header

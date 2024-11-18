@@ -1,6 +1,6 @@
 import React, { useState, useEffect, MouseEventHandler } from 'react'
 import { crimson_pro } from '@/app/fonts'
-import { daysSinceStrike, timerSecondsToMinutes } from '@/app/utils'
+import { timerSecondsToMinutes } from '@/app/utils'
 import {
   Button,
   Flex,
