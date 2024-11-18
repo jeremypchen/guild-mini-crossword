@@ -12,7 +12,8 @@ const Header = () => {
     }) || false
 
   if (isMobile) {
-    return <MobileHeader />
+    return <Flex paddingTop="20px"></Flex>
+    // return <MobileHeader />
   }
 
   return (
@@ -47,10 +48,10 @@ const Header = () => {
           </Text>
         </Flex>
 
-        <Flex alignItems="center" gap="6px">
-          <Text fontSize="14px">Support our ULP strike</Text>
+        {/* <Flex alignItems="center" gap="6px">
+          <Text fontSize="14px">Support the NYT Tech Guild</Text>
           <StrikeFundButton variant="red" />
-        </Flex>
+        </Flex> */}
       </Flex>
 
       <Flex direction="column" width="450px" alignSelf="center" color="black">
@@ -64,12 +65,12 @@ const Header = () => {
           The Mini Crossword: Strike Edition
         </Text>
 
-        <Flex width="100%" justifyContent="space-between" marginTop="6px">
+        <Flex width="100%" justifyContent="center" marginTop="6px">
           <Text fontSize="15px">By The NYT Tech Guild</Text>
-          <Flex gap="4px">
+          {/* <Flex gap="4px">
             <Text fontSize="15px">Strike:</Text>
             <DaysOnStrikeBadge />
-          </Flex>
+          </Flex> */}
         </Flex>
       </Flex>
     </Flex>

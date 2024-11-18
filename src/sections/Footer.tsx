@@ -36,7 +36,7 @@ const Footer = () => {
               We are the tech workers of The New York Times.
             </Text>
             <Text fontSize="14px" marginTop="10px">
-              We are on ULP strike for Just Cause, Fair Pay, and
+              We went on ULP strike for Just Cause, Fair Pay, and
               Return-to-Office (RTO) protections.{' '}
               <Link
                 textDecor="underline"
@@ -48,10 +48,10 @@ const Footer = () => {
               .
             </Text>
 
-            <Text fontSize="14px" marginTop="10px" marginBottom="10px">
+            {/* <Text fontSize="14px" marginTop="10px" marginBottom="10px">
               Contribute to our strike fund.
             </Text>
-            <StrikeFundButton variant={'white'} />
+            <StrikeFundButton variant={'white'} /> */}
           </Flex>
 
           <Image

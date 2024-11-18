@@ -180,7 +180,7 @@ const PuzzleCompletedModal = ({
           marginTop="40px"
           borderTop="1px solid #1E1E1E"
           borderBottom="1px solid #1E1E1E"
-          justifyContent="space-between"
+          justifyContent="space-around"
           paddingY="10px"
           paddingX={isMobile ? '' : '40px'}
         >
@@ -194,7 +194,7 @@ const PuzzleCompletedModal = ({
             </Text>
           </Flex>
 
-          <Flex direction="column" alignItems="center">
+          {/* <Flex direction="column" alignItems="center">
             <Text fontSize="36px" color="#B42E2F" fontWeight="bold">
               {daysSinceStrike()}
             </Text>
@@ -202,7 +202,7 @@ const PuzzleCompletedModal = ({
               Days <br />
               on strike
             </Text>
-          </Flex>
+          </Flex> */}
 
           <Flex direction="column" alignItems="center">
             <Text fontSize="36px" color="#B42E2F" fontWeight="bold">
@@ -254,17 +254,18 @@ const PuzzleCompletedModal = ({
           display="block"
           href="https://nytimesguild.org/tech/guild-builds/index.html"
         >
-          New games, every day while we strike.
+          More games, built by the NYT Tech Guild
+          {/* New games, every day while we strike. */}
         </Link>
 
-        <Text
+        {/* <Text
           alignSelf="center"
           color="black"
           marginTop="14px"
           fontSize={isMobile ? '14px' : '18px'}
         >
           By the NYT Tech Guild
-        </Text>
+        </Text> */}
       </Flex>
     </Flex>
   )
